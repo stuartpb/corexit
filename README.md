@@ -4,11 +4,17 @@ A userscript to clean up post-incident pollution.
 
 ## Background
 
+I had the Better History extension installed, and it got hijacked and spewed a bunch of [bogus Russian malware localStorage items][1] all over my browser. I wanted to get rid of these, without having to blow away all my local data.
+
+[1]: https://www.reddit.com/r/Malware/comments/4cw9fz/lnkrus_redirect_malware_report/
+
+This userscript, used in conjunction with the procedure described below, was the simplest tool I could build to do this.
+
 ## Usage
 
-(Assuming you're on the same version of Google Chrome as me; if you're using another browser, you're on your own)
+(This worked as of Chrome 49 in early April 2016, but if it's been a while since then, I'd be more surprised than not if this next part worked without major changes.)
 
-Navigate to chrome://settings-frame/cookies and, for good normal maintenance's sake. delete anything you don't need. (Protip: you can probably delete everything that comes up when you search for domains containing "blog." or "blogs." or "times")
+Navigate to chrome://settings-frame/cookies and, for good normal maintenance's sake, delete anything you don't need. (Protip: you can probably delete everything that comes up when you search for domains containing "blog." or "blogs." or "times")
 
 Once you've cleaned up all the low-hanging fruit,  paste this into the Developer Console:
 
@@ -81,18 +87,19 @@ Open a tab to the first domain in that array. The tab should start browsing thro
 
 The tab will likely stop browsing through domains several times. I recommend keeping the developer console open with "Preserve log" checked, to monitor exactly which domain was supposed to be loaded, and what happened instead.
 
-If navigation stops (or skips) because of a redirect, you should remove the local storage for the domain that was supposed to load (as it's probably never going to load, due to the redirect), and navigate manually to the next domain.
+If navigation stops (or skips) because of a redirect, you should remove the local storage for the domain that was supposed to load (as it's probably never going to load, due to the redirect), and navigate manually to the next domain. (If it skips to a domain that is later in the array, don't forget that you'll need to manually navigate back to what the next item was *going* to be before the redirect, to clean up the domains that were skipped over.)
 
-If it's stopped because the domain failed to load (or was blocked by something like uBlock Origin), delete that domain's localStorage from the Chrome cookie settings tab you opened earlier (as it's usually an ad server), and manually navigate to the next item in the array (which will be printed in the console, if you keep "Preserve log" on).
+If it's stopped because the domain failed to load (or was blocked by something like uBlock Origin), likewise, delete that domain's localStorage from the Chrome cookie settings tab you opened earlier (as it's usually an ad server), and manually navigate to the next item in the array (which will be printed in the console, if you keep "Preserve log" on).
 
-If the autoclean stops on a proper site you trust and use regularly, and opening the console shows that the script element was blocked by the site's Content Security Policy, copy and paste the logged script directly into the console input, which should perform the cleanup and resume navigation.
-
-There are other reasons that a navigation will fail (for instance, a domain will redirect to a site on a non-matching domain): for this reason,
+If the autoclean stops on a proper site you trust and use regularly, and opening the console shows that the script element was blocked by the site's Content Security Policy, copy and paste the logged script directly into the console input, which should perform the cleanup and resume navigation. (If the userscript itself is disallowed, you can probably figure out how to assemble it using the script from a previous site's cleanup.)
 
 ## Conclusions
 
-After looking at just *how much junk* has accrued trying to work around the cleanup for this, I've come to one inescapable conclusion: you're better off just deleting all your local data anyway. It's 99% tracking cookies and detritus from dead domains, and you're better off without it.
+After looking at just *how much junk* has accrued trying to work around the cleanup for this (over a year or two on my desktop), I've come to one inescapable conclusion: you're better off just deleting all your local data anyway. It's 99% tracking cookies and detritus from dead domains, and you're better off without it.
 
 ## Name
 
-The name for this userscript references the Corexit oil dispersant used to clean up the Exxon Valdez and Deepwater Horizon oil spills, as it is a regrettable solution to a regrettable problem.
+The name for this userscript references the [Corexit][] oil dispersant used to clean up the Exxon Valdez and Deepwater Horizon oil spills, as, like that [toxic solution][toxicity], it is a regrettable pass at remedying a regrettable problem.
+
+[Corexit]: https://en.wikipedia.org/wiki/Corexit
+[toxicity]: https://en.wikipedia.org/wiki/Corexit#Toxicity
