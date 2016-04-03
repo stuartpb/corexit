@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         Corexit
-// @version      0.1
+// @version      0.2.0
 // @description  Clean up a disaster
 // @author  Stuart P. Bentley <stuart@testtrack4.com> (https://stuartpb.com)
 // @match        *://*/*
+// @run-at       document-start
 // @grant        GM_getValue
 // @grant        GM_setValue
 // ==/UserScript==
