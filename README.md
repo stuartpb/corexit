@@ -2,6 +2,31 @@
 
 A userscript to clean up post-incident pollution.
 
+Copyright 2016 Stuart P. Bentley
+
+⚠️ WARNING! ⚠️  
+☢️ 😱 DO NOT USE THIS PROGRAM. 😱 ☢️  
+This program is not a program of honor.  
+
+No highly esteemed function is executed here.  
+
+What is here is dangerous and repulsive to us.  
+
+The danger is still present, in your time, as it was in ours,  
+without even the implied warranty of MERCHANTABILITY or  
+FITNESS FOR A PARTICULAR PURPOSE.
+
+This program is best shunned and left unused (but it is free software,  
+and you are welcome to redistribute it under certain conditions).  
+😱 ☢️ DO NOT USE THIS PROGRAM. ☢️ 😱
+
+This program is licensed under the Sandia Message Public License,  
+sublicense Do What The Fuck You Want To Public License.  
+This may be abbreviated as sandia-wtfpl.  
+You may obtain a copy of the License(s) at  
+https://github.com/cdanis/sandia-public-license/blob/main/LICENSE.md and  
+https://spdx.org/licenses/WTFPL.html
+
 ## Background
 
 I had the Better History extension installed, and it got hijacked and spewed a bunch of [bogus Russian malware localStorage items][1] all over my browser. I wanted to get rid of these, without having to blow away all my local data.
